@@ -110,8 +110,24 @@ FLOAT NeuralNet::TrainBP(const MATRIX& training_inputs, const MATRIX& training_o
                 << '\t' << (training_outputs.GetRow(j))
                 << '\t' << (training_inputs.GetRow(j));
         debugFile << endl;
-        }
+    }
 
 #endif
         return mse;
     }
+
+FLOAT NeuralNet::TestNN(const MATRIX& training_inputs, const MATRIX& training_outputs)
+{
+    for (int j = 0; j < training_inputs.CountRows(); j++)
+    {
+        VECTOR results = FeedForward(training_inputs.GetRow(j));
+        cout << j;
+        cout << '\t' << results
+                << '\t' << (training_outputs.GetRow(j))
+                << '\t' << (training_inputs.GetRow(j));
+        cout << endl;
+    }
+    
+    FLOAT mse = CalcMSE(training_inputs, training_outputs);
+    return mse;
+}

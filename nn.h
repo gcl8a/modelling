@@ -398,6 +398,8 @@ public:
 
     FLOAT TrainBP(const MATRIX& training_inputs, const MATRIX& training_outputs,
             long unsigned maxIter, FLOAT threshold, FLOAT b);
+
+    FLOAT TestNN(const MATRIX& training_inputs, const MATRIX& training_outputs);
 };
 
 #endif /* NN_H_ */
